@@ -84,6 +84,8 @@ class LinkedListItemTest < MiniTest::Unit::TestCase
   def test_04f_comparator_symbol
     lli1 = LinkedListItem.new(:bar)
     lli2 = LinkedListItem.new("bar")
+    puts lli1.payload.class
+    puts lli2.payload
     assert lli1 > lli2
     assert lli2 < lli1
   end
