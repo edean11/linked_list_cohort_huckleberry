@@ -1,3 +1,5 @@
+require_relative 'linked_list_item'
+
 class LinkedList
   def initialize(*payload)
   	if payload[0]
@@ -90,9 +92,59 @@ class LinkedList
   	end
   end
   def sorted?
-  	# iterator = 0
-  	# item_iteration = @firstItem
-  	# while iterator <= @count
+  	iterator = 0
+  	item_iteration = @firstItem
+  	if @count <= 0
+  		return true
+  	else
+	  	while iterator <= @count
+	  		if iterator == @count
+	  			return true
+	  		elsif item_iteration.payload.to_s > item_iteration.next_item.payload.to_s &&
+	  			  item_iteration.payload.class.to_s == item_iteration.next_item.payload.class.to_s
+	  			return false
+	  		elsif item_iteration.payload.class.to_s != item_iteration.next_item.payload.class.to_s &&
+	  			  item_iteration.payload.class.to_s > item_iteration.next_item.payload.class.to_s
+	  			return false
+	  		else
+	  			iterator += 1
+	  			item_iteration = item_iteration.next_item
+	  		end
+	  	end
+	end
+  end
+  def sort!
+  	iterator = 0
+  	item_iteration = @firstItem
+  	while iterator <= @count
+  		if iterator == @count
+  			puts "break"
+  			break
+  		elsif item_iteration.payload.to_s > item_iteration.next_item.payload.to_s &&
+  			  item_iteration.payload.class.to_s == item_iteration.next_item.payload.class.to_s
+  			puts "one"
+  			puts item_iteration.next_item
+  			if item_iteration == @firstItem
+  				@firstItem = item_iteration.next_item
+  			end
+  			item_iteration.next_item.next_item = item_iteration
+  			item_iteration = item_iteration
+  			iterator += 1
+  		elsif item_iteration.payload.class.to_s != item_iteration.next_item.payload.class.to_s &&
+  			  item_iteration.payload.class.to_s > item_iteration.next_item.payload.class.to_s
+  			puts "two"
+  			if item_iteration == @firstItem
+  				@firstItem = item_iteration.next_item
+  			end
+  			item_iteration.next_item.next_item = item_iteration
+  			item_iteration = item_iteration
+  			iterator += 1
+  		else
+  			puts "three"
+  			iterator += 1
+  			item_iteration = item_iteration.next_item
+  		end
+  	end
   end
   def to_s
   	if @currItem

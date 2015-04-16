@@ -18,7 +18,7 @@ class LinkedListItem
   	next_item.nil?
   end
   def to_s
-  	@payload
+  	@payload.to_s
   end
   def <=>(other)
   	if self.payload.to_s == other.payload.to_s
