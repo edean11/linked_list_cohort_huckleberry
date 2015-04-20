@@ -20,6 +20,7 @@ class LinkedList
   		@count = -1
   	end
   end
+
   def push(pushedPayload)
   	@count += 1
   	lli = LinkedListItem.new(pushedPayload)
@@ -29,14 +30,16 @@ class LinkedList
   	end
   	@currItem = lli
   end
+
   def get_item(index)
   	item_iteration = @firstItem
-	index.times do |num|
-		nexting = item_iteration.next_item
-		item_iteration = nexting
-	end
-	return item_iteration
+	  index.times do |num|
+  		next_item = item_iteration.next_item
+  		item_iteration = next_item
+	  end
+	  return item_iteration
   end
+
   def get(index)
   	if index < 0 || index > @count
   		raise IndexError
@@ -46,6 +49,7 @@ class LinkedList
   		return get_item(index).payload
   	end
   end
+
   def set(index,item)
   	if index < 0 || index > @count
   		raise IndexError
@@ -53,6 +57,7 @@ class LinkedList
   		get_item(index).payload = item
   	end
   end
+
   def delete(index)
   	if index > @count
   		raise IndexError
@@ -63,12 +68,15 @@ class LinkedList
   	end
   	@count -= 1
   end
+
   def [](num)
   	get(num)
   end
+
   def []=(num,item)
   	set(num,item)
   end
+
   def index(value)
   	iterator = 0
   	item_iteration = @firstItem
@@ -81,15 +89,18 @@ class LinkedList
   		end
   	end
   end
+
   def size
   	@count + 1
   end
+
   def last
   	if @currItem
   		@currItem.payload
   	else @currItem
   	end
   end
+
   def sorted?
   	iterator = 0
   	item_iteration = @firstItem
@@ -110,8 +121,9 @@ class LinkedList
 	  			item_iteration = item_iteration.next_item
 	  		end
 	  	end
-	end
+	  end
   end
+
   def sort!
   	iterator = 0
   	item_iteration = @firstItem
@@ -145,6 +157,7 @@ class LinkedList
   		end
   	end
   end
+
   def to_s
   	if @currItem
   		iterator = 0
@@ -162,5 +175,6 @@ class LinkedList
   	else return "| |"
   	end
   end
+
 end
 
