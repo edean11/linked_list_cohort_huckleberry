@@ -54,15 +54,14 @@ class LinkedList
   	end
   end
   def delete(index)
-  		if index > @count
-  			raise IndexError
-  		elsif index > 0
-  			get_item(index-1).next_item = get_item(index+1)
-  		else
-  			@firstItem = @firstItem.next_item
-  			puts @firstItem
-  		end
-  		@count -= 1
+  	if index > @count
+  		raise IndexError
+  	elsif index > 0
+  		get_item(index-1).next_item = get_item(index+1)
+  	else
+  		@firstItem = @firstItem.next_item
+  	end
+  	@count -= 1
   end
   def [](num)
   	get(num)
